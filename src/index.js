@@ -1,3 +1,4 @@
-import {getWeather} from './weather'
+import css from './styles.css'
+import UI from './modules/UI'
 
-getWeather('Tokyo');
+UI.display();
