@@ -2,6 +2,9 @@ import weatherInfo from './weatherInfo'
 import tempIcon from '/home/jefferson/top/weather-app/src/img/thermometer-lines.png'
 import windIcon from '/home/jefferson/top/weather-app/src/img/weather-windy.png'
 import humidityIcon from '/home/jefferson/top/weather-app/src/img/water-percent.png'
+import maxTempIcon from '/home/jefferson/top/weather-app/src/img/thermometer-chevron-up.png'
+import minTempIcon from '/home/jefferson/top/weather-app/src/img/thermometer-chevron-down.png'
+import pressureIcon from '/home/jefferson/top/weather-app/src/img/chevron-triple-down.png'
 
 const UI = (() => {
 
@@ -55,8 +58,150 @@ const UI = (() => {
     }
   }
 
-  const displayData = async () => {
+  const getPlaceData = () => {
+    const place = document.createElement('h1');
+    place.textContent = localStorage.getItem('place');
+    place.textContent += ', ' + localStorage.getItem('country');
 
+    return place;
+  }
+
+  const getWeatherDescription = async () => {
+    const basicData = document.createElement('div');
+    basicData.classList.add('basic-data');
+  
+    const description = document.createElement('h1');
+    description.textContent = localStorage.getItem('description');
+  
+    const img = await getIcon();
+  
+    basicData.appendChild(img);
+    basicData.appendChild(description);
+
+    return basicData;
+  }
+
+  const getCurrentTempData = () => {
+    const tempData = document.createElement('div');
+  
+    const tempImg = document.createElement('img');
+    tempImg.src = tempIcon;
+  
+    const temp = document.createElement('h2');
+    temp.textContent = localStorage.getItem('temp');
+    temp.textContent += ' °F';
+    
+    tempData.appendChild(tempImg);
+    tempData.appendChild(temp);
+
+    return tempData;
+  }
+
+  const getMaxTempData = () => {
+    const tempData = document.createElement('div');
+  
+    const tempImg = document.createElement('img');
+    tempImg.src = maxTempIcon;
+  
+    const temp = document.createElement('h2');
+    temp.textContent = localStorage.getItem('temp_max');
+    temp.textContent += ' °F';
+    
+    tempData.appendChild(tempImg);
+    tempData.appendChild(temp);
+
+    return tempData;
+  }
+
+  const getMinTempData = () => {
+    const tempData = document.createElement('div');
+  
+    const tempImg = document.createElement('img');
+    tempImg.src = minTempIcon;
+  
+    const temp = document.createElement('h2');
+    temp.textContent = localStorage.getItem('temp_min');
+    temp.textContent += ' °F';
+    
+    tempData.appendChild(tempImg);
+    tempData.appendChild(temp);
+
+    return tempData;
+  }
+
+  const getWindData = () => {
+    const windData = document.createElement('div');
+  
+    const windImg = document.createElement('img');
+    windImg.src = windIcon;
+  
+    const windSpeed = document.createElement('h2');
+    windSpeed.textContent = localStorage.getItem('wind');
+    windSpeed.textContent += ' mph';
+  
+    windData.appendChild(windImg);
+    windData.appendChild(windSpeed);
+
+    return windData;
+  }
+
+  const getHumidityData = () => {
+    const humidityData = document.createElement('div');
+  
+    const humidityImg = document.createElement('img');
+    humidityImg.src = humidityIcon;
+  
+    const humidity = document.createElement('h2');
+    humidity.textContent = localStorage.getItem('humidity');
+    humidity.textContent += '%';
+  
+    humidityData.appendChild(humidityImg);
+    humidityData.appendChild(humidity);
+
+    return humidityData;
+  }
+
+  const getPressureData = () => {
+    const pressureData = document.createElement('div');
+
+    const pressureImg = document.createElement('img');
+    pressureImg.src = pressureIcon;
+
+    const pressure = document.createElement('h2');
+    pressure.textContent = localStorage.getItem('pressure');
+    pressure.textContent += ' hpa';
+
+    pressureData.appendChild(pressureImg);
+    pressureData.appendChild(pressure);
+
+    return pressureData;
+  }
+
+  const displayData = async () => {
+    const main = document.getElementsByTagName('main')[0];
+    const data = document.createElement('div');
+
+    data.id = 'data'
+
+    data.appendChild(getPlaceData());
+
+    data.appendChild(await getWeatherDescription());
+
+    data.appendChild(getCurrentTempData());
+
+    data.appendChild(getMaxTempData());
+
+    data.appendChild(getMinTempData());
+
+    data.appendChild(getWindData());
+
+    data.appendChild(getHumidityData());
+
+    data.appendChild(getPressureData());
+
+    main.appendChild(document.createElement('div'));
+    main.appendChild(data);
+    main.appendChild(document.createElement('div'));
   }
 
   const display = () => {
