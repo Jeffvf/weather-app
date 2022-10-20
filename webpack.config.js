@@ -4,10 +4,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-        'file-loader',
-        ],
+        test: /\.(png|svg|jpg|gif)$/i,
+        type: 'asset/resource',
       },
       {
         test: /\.css$/i,
