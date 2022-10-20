@@ -14,7 +14,9 @@ const UI = (() => {
     btn.type = 'submit';
 
     form.addEventListener('submit', (e) => {
-      weatherInfo.reportWeather(searchBar.value);
+      if(searchBar.value != ''){
+        weatherInfo.reportWeather(searchBar.value);
+      }
 
       e.preventDefault();
     });
