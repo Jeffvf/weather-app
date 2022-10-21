@@ -60,3 +60,7 @@ main{
   align-items: center;
   justify-items: center;
 }
+
+#data > h1{
+  text-align: center;
+}
