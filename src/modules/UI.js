@@ -19,12 +19,16 @@ const UI = (() => {
     btn.textContent = 'Search';
     btn.type = 'submit';
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       if(searchBar.value != ''){
-        weatherInfo.reportWeather(searchBar.value);
+        const result = weatherInfo.reportWeather(searchBar.value);
+
+        result.then(() => {
+          window.location.reload();
+        })
         searchBar.value = '';
       }
-
+      
       e.preventDefault();
     });
     
