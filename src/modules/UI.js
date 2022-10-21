@@ -14,6 +14,8 @@ const UI = (() => {
     const btn = document.createElement('button');
     const form = document.createElement('form');
 
+    searchBar.placeholder = 'Type your location';
+
     form.method = 'get';
 
     btn.textContent = 'Search';
@@ -49,7 +51,7 @@ const UI = (() => {
 
   const getIcon = async () => {
     const id = localStorage.getItem('icon');
-    console.log(id)
+
     try{
       const img = document.createElement('img');
       img.src = `http://openweathermap.org/img/wn/${id}@2x.png`;
