@@ -23,9 +23,7 @@ const UI = (() => {
       if(searchBar.value != ''){
         const result = weatherInfo.reportWeather(searchBar.value);
 
-        result.then(() => {
-          window.location.reload();
-        })
+        result.then(() => window.location.reload());
         searchBar.value = '';
       }
       
@@ -209,6 +207,11 @@ const UI = (() => {
   }
 
   const display = () => {
+    if(!localStorage.getItem('place')){
+      const result = weatherInfo.reportWeather('Tokyo');
+
+      result.then(() => window.location.reload());
+    }
     displayHeader();
     displayData();
   }
