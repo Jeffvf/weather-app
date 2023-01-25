@@ -1,7 +1,7 @@
 const weatherInfo = (() => {
   async function getLocationWeather(location) {
     try {
-      const weather = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=507218e34ab44f761e2f3ca63a9eaeec`);
+      const weather = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=507218e34ab44f761e2f3ca63a9eaeec&lang=pt_br`);
 
       const fetchResult = await weather.json();
 
@@ -22,7 +22,10 @@ const weatherInfo = (() => {
     });
 
     localStorage.setItem('country', info.sys.country);
-    localStorage.setItem('description', info.weather[0].main);
+    let description = info.weather[0].description;
+    const firstLetter = description.charAt(0);
+    description = firstLetter.toUpperCase() + description.slice(1)
+    localStorage.setItem('description', description);
     localStorage.setItem('icon', info.weather[0].icon);
     localStorage.setItem('wind', info.wind.speed);
   }
