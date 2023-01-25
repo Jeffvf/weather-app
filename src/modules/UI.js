@@ -93,7 +93,7 @@ const UI = (() => {
 
     const temp = document.createElement('h2');
     temp.textContent = localStorage.getItem('temp');
-    temp.textContent += ' °F';
+    temp.textContent += ' °C';
 
     tempData.appendChild(tempImg);
     tempData.appendChild(temp);
@@ -109,7 +109,7 @@ const UI = (() => {
 
     const temp = document.createElement('h2');
     temp.textContent = localStorage.getItem('temp_max');
-    temp.textContent += ' °F';
+    temp.textContent += ' °C';
 
     tempData.appendChild(tempImg);
     tempData.appendChild(temp);
@@ -125,7 +125,7 @@ const UI = (() => {
 
     const temp = document.createElement('h2');
     temp.textContent = localStorage.getItem('temp_min');
-    temp.textContent += ' °F';
+    temp.textContent += ' °C';
 
     tempData.appendChild(tempImg);
     tempData.appendChild(temp);
@@ -141,7 +141,7 @@ const UI = (() => {
 
     const windSpeed = document.createElement('h2');
     windSpeed.textContent = localStorage.getItem('wind');
-    windSpeed.textContent += ' mph';
+    windSpeed.textContent += ' m/s';
 
     windData.appendChild(windImg);
     windData.appendChild(windSpeed);
