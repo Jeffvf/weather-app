@@ -1,7 +1,7 @@
 const weatherInfo = (() => {
   async function getLocationWeather(location) {
     try {
-      const weather = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=507218e34ab44f761e2f3ca63a9eaeec&lang=pt_br`);
+      const weather = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=${process.env.API_KEY}&lang=pt_br`);
 
       const fetchResult = await weather.json();
 
