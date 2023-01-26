@@ -13,11 +13,11 @@ const UI = (() => {
     const btn = document.createElement('button');
     const form = document.createElement('form');
 
-    searchBar.placeholder = 'Type your location';
+    searchBar.placeholder = 'Digite sua localização';
 
     form.method = 'get';
 
-    btn.textContent = 'Search';
+    btn.textContent = 'Buscar';
     btn.type = 'submit';
 
     form.addEventListener('submit', async (e) => {
@@ -210,7 +210,7 @@ const UI = (() => {
 
   const display = () => {
     if (!localStorage.getItem('place')) {
-      const result = weatherInfo.reportWeather('Tokyo');
+      const result = weatherInfo.reportWeather('São José dos Campos');
 
       result.then(() => window.location.reload());
     }
